@@ -128,14 +128,14 @@ export function AddChat({ open }) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <DialogPanel className=" w-full relative transform overflow-hidden rounded-lg bg-white dark:bg-backgroundDark1 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+              <DialogPanel className="w-full relative transform overflow-hidden rounded-lg bg-white dark:bg-backgroundDark2 px-4 pb-4 pt-5 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div className="sm:flex sm:items-start">
                   <div className="w-full mt-3 text-center sm:mt-0 sm:text-left">
                     <DialogTitle
                       as="h3"
-                      className="text-lg leading-6 font-medium text-slate-500 dark:text-slate-50 "
+                      className="text-lg leading-6 font-medium text-text_light_primary dark:text-text_dark_primary"
                     >
-                      Create chat
+                      New Chat
                     </DialogTitle>
                     <div className="mt-2 flex items-center gap-2">
                       <Switch
@@ -145,14 +145,14 @@ export function AddChat({ open }) {
                       >
                         <span className="size-4 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-6" />
                       </Switch>
-                      <span className="dark:text-slate-300 text-slate-500">
+                      <span className="dark:text-text_dark_secondary text-text_light_secondary text-sm">
                         Enable group chat
                       </span>
                     </div>
 
                     {!isGroupChat && (
                       <div className="mt-3">
-                        <p className="text-lg font-medium dark:text-slate-50 text-slate-900">
+                        <p className="text-base font-normal dark:text-text_dark_primary text-text_light_primary">
                           Sure you want to create a chat with{" "}
                           {newChatUser?.username} ?
                         </p>
@@ -164,16 +164,16 @@ export function AddChat({ open }) {
                         <div className="inputs mt-5">
                           <input
                             type="text"
-                            className="w-full px-3 py-2 rounded-md outline-none bg-backgroundDark3 text-slate-100"
-                            placeholder="Enter a group name"
+                            className="w-full px-4 py-2.5 rounded-md outline-none bg-backgroundLight2 dark:bg-backgroundDark1 text-text_light_primary dark:text-text_dark_primary border border-border_light dark:border-border_dark focus:border-primary transition-all text-sm"
+                            placeholder="Enter group name"
                             onChange={(e) => setGroupName(e.target.value)}
                           />
 
                           <div className="addParticpants mt-2">
-                            <div className="w-full flex justify-between items-center rounded-md outline-none bg-backgroundDark3">
+                            <div className="w-full flex justify-between items-center rounded-lg outline-none bg-gray-100 dark:bg-backgroundDark1 border border-gray-300 dark:border-gray-600">
                               <input
                                 type="text"
-                                className="w-[90%] px-3 py-2 rounded-md outline-none bg-transparent text-slate-100"
+                                className="w-[90%] px-4 py-3 rounded-lg outline-none bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
                                 placeholder="Add more users..."
                                 ref={searchUserRef}
                                 onKeyDown={(e) => {
@@ -182,7 +182,7 @@ export function AddChat({ open }) {
                                   }
                                 }}
                               />
-                              <span className=" text-slate-400 px-3 cursor-pointer">
+                              <span className="text-gray-500 dark:text-gray-400 px-3 cursor-pointer hover:text-primary transition-colors">
                                 <BiSearch
                                   className="size-5"
                                   onClick={() => handleSearchUser()}
@@ -190,11 +190,11 @@ export function AddChat({ open }) {
                               </span>
                             </div>
                             <div className="inputAccordianDiv">
-                              <ul className="dark:bg-backgroundDark3 rounded-md px-2 mt-1 max-h-[150px] overflow-auto ">
+                              <ul className="bg-gray-50 dark:bg-backgroundDark1 rounded-lg px-2 mt-2 max-h-[150px] overflow-auto border border-gray-200 dark:border-gray-600">
                                 {users.map((user) => (
                                   <li
                                     key={user._id}
-                                    className="dark:text-slate-100 flex justify-between items-center m-2"
+                                    className="text-gray-900 dark:text-white flex justify-between items-center my-2 p-2 hover:bg-gray-100 dark:hover:bg-backgroundDark2 rounded-lg transition-colors"
                                   >
                                     <div className="flex items-center gap-2">
                                       <img
@@ -208,7 +208,7 @@ export function AddChat({ open }) {
                                       ({ _id }) => user._id === _id
                                     ) ? (
                                       <button
-                                        className="px-2 py-1 text-xs dark:text-white text-black bg-primary rounded-md hover:bg-primary_hover"
+                                        className="px-3 py-1.5 text-xs text-white bg-primary rounded-lg hover:bg-primary_hover font-medium transition-colors"
                                         onClick={() => {
                                           if (
                                             isGroupChat &&
@@ -238,7 +238,7 @@ export function AddChat({ open }) {
                                 groupChatParticipants.map((user) => (
                                   <div
                                     key={user._id}
-                                    className="flex gap-[2px]  dark:bg-backgroundDark2 p-2 rounded-full items-center"
+                                    className="flex gap-1 bg-gray-200 dark:bg-backgroundDark1 px-3 py-1.5 rounded-full items-center border border-gray-300 dark:border-gray-600"
                                   >
                                     <div className="flex items-center gap-1">
                                       <img
@@ -246,12 +246,12 @@ export function AddChat({ open }) {
                                         src={profile2}
                                         alt={user.username}
                                       />
-                                      <span className="text-xs dark:text-slate-300">
+                                      <span className="text-xs text-gray-900 dark:text-gray-300 font-medium">
                                         {user.username}
                                       </span>
                                     </div>
                                     <button
-                                      className="ml-1 text-white"
+                                      className="ml-1 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors"
                                       onClick={() => {
                                         setGroupChatParticipants(
                                           groupChatParticipants.filter(
@@ -274,14 +274,14 @@ export function AddChat({ open }) {
                 <div className="mt-5 flex items-center justify-end">
                   <button
                     type="button"
-                    className="rounded-md border border-transparent bg-backgroundDark2 px-4 py-2 text-base font-medium mx-2 text-white shadow-sm hover:bg-backgroundDark3"
+                    className="rounded-md bg-backgroundLight2 dark:bg-backgroundDark1 px-4 py-2 text-sm font-medium mx-2 text-text_light_primary dark:text-text_dark_primary hover:bg-backgroundLight3 dark:hover:bg-backgroundDark3 transition-colors"
                     onClick={handleClose}
                   >
                     Cancel
                   </button>
                   <button
                     type="button"
-                    className="rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium mx-2 text-white shadow-sm hover:bg-blue-700 "
+                    className="rounded-md bg-primary px-4 py-2 text-sm font-medium mx-2 text-white hover:bg-primary_hover transition-colors"
                     onClick={
                       isGroupChat ? createNewGroupChat : createNewOneToOneChat
                     }

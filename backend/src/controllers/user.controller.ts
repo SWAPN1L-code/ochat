@@ -9,6 +9,7 @@ import { createTokens } from "./auth/authUtils";
 import { filterUserData } from "../helpers/utils";
 import { SuccessResponse } from "../core/ApiResponse";
 import { cookieValidity, environment, tokenInfo } from "../config";
+import { ProtectedRequest } from "../types/app-request";
 
 const signUp = asyncHandler(async (req: Request, res: Response) => {
   const { email, username, password } = req.body;
@@ -91,4 +92,36 @@ const logout = asyncHandler(async (req: Request, res: Response) => {
   new SuccessResponse("logout successful", {}).send(res, {});
 });
 
-export { signUp, login, logout };
+const updateProfilePicture = asyncHandler(
+  async (req: ProtectedRequest, res: Response) => {
+    const file = req.file;
+
+    if (!file) {
+      throw new BadRequestError("Profile picture is required");
+    }
+
+    const user = req.user;
+    if (!user) {
+      throw new AuthFailureError("User not authenticated");
+    }
+
+    // Construct the avatar URL
+    const avatarUrl = `${req.protocol}://${req.get("host")}/images/${
+      file.filename
+    }`;
+
+    // Update user's avatar URL
+    const updatedUser = await userRepo.updateInfo({
+      ...user,
+      avatarUrl,
+    } as User);
+
+    const userData = await filterUserData(updatedUser);
+
+    new SuccessResponse("Profile picture updated successfully", {
+      user: userData,
+    }).send(res);
+  }
+);
+
+export { signUp, login, logout, updateProfilePicture };

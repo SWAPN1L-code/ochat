@@ -9,6 +9,7 @@ import { useChat } from "../context/ChatContext";
 import VideoChat from "../components/VideoChat";
 import { useConnectWebRtc } from "../context/WebRtcContext";
 import IncomingCall from "../components/IncomingCall";
+import { BsFillChatRightTextFill } from "../assets";
 
 export default function Chat() {
   const {
@@ -31,7 +32,7 @@ export default function Chat() {
         )}
 
         <VideoChat show={showVideoComp} />
-        <div className="w-full h-screen md:h-[calc(100vh-120px)] flex dark:bg-backgroundDark3 relative">
+        <div className="w-full h-screen md:h-[calc(100vh-120px)] flex bg-backgroundLight2 dark:bg-backgroundDark3 relative">
           <div className="h-full md:h-fit md:absolute md:bottom-0 md:w-full md:hidden">
             <SideMenu
               setActiveLeftSidebar={setActiveLeftSidebar}
@@ -51,8 +52,14 @@ export default function Chat() {
             {currentSelectedChat.current?._id ? (
               <ChatsSection />
             ) : (
-              <div className="h-full w-full flex items-center justify-center text-2xl text-slate-500">
-                <h1>No chat selected</h1>
+              <div className="h-full w-full flex flex-col items-center justify-center bg-backgroundLight1 dark:bg-backgroundDark2 border-l border-border_light dark:border-border_dark">
+                <div className="text-primary text-6xl mb-4">
+                  <BsFillChatRightTextFill />
+                </div>
+                <h1 className="text-2xl font-light text-text_light_primary dark:text-text_dark_primary mb-2">OChat Web</h1>
+                <p className="text-text_light_secondary dark:text-text_dark_secondary text-sm text-center max-w-md px-4">
+                  Send and receive messages without keeping your phone online.
+                </p>
               </div>
             )}
           </div>

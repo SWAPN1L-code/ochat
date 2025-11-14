@@ -16,29 +16,42 @@
 
 /* For Chrome, Safari, and Opera */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 /* For Firefox */
 ::-moz-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 /* Scrollbar Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1ce;
+  background: #F0F2F5;
   border-radius: 10px;
 }
 
 /* Scrollbar Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+  background: #D1D5DB;
+  border-radius: 6px;
 }
 
 /* Scrollbar Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #9CA3AF;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #0B141A;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2A3942;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #374955;
 }
 
 html {
@@ -47,23 +60,59 @@ html {
 
 @layer base {
   body {
-    @apply font-poppins bg-backgroundLight1;
+    @apply font-poppins bg-backgroundLight2 dark:bg-backgroundDark3;
   }
 }
 
 @layer utilities {
   .container-shadow {
-    @apply shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px];
+    @apply shadow-md shadow-gray-200 dark:shadow-none;
   }
+  
   .dark-upper-cont-shadow {
-    -webkit-box-shadow: 0px -14px 35px -18px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px -14px 35px -18px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px -14px 35px -18px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .light-upper-cont-shadow {
-    -webkit-box-shadow: 0px -14px 35px -18px rgba(0, 0, 0, 0.38);
-    -moz-box-shadow: 0px -14px 35px -18px rgba(0, 0, 0, 0.38);
-    box-shadow: 0px -14px 35px -18px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* WhatsApp message bubble tail */
+  .message-tail-right {
+    position: relative;
+  }
+  
+  .message-tail-right::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-bottom: 13px solid #DCF8C6;
+  }
+  
+  .dark .message-tail-right::after {
+    border-bottom-color: #005C4B;
+  }
+  
+  .message-tail-left {
+    position: relative;
+  }
+  
+  .message-tail-left::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-right: 8px solid transparent;
+    border-bottom: 13px solid #FFFFFF;
+  }
+  
+  .dark .message-tail-left::after {
+    border-bottom-color: #202C33;
   }
 }

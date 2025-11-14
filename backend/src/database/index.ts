@@ -33,7 +33,13 @@ mongoose
     colorsUtils.log("success", "🛢  mongoose connection done");
   })
   .catch((e) => {
-    console.error("mongoose connection error: " + e.message);
+    console.error("❌ mongoose connection error: " + e.message);
+    console.error("Stack:", e.stack);
+    // In production, exit if database connection fails
+    if (process.env.NODE_ENV === "production") {
+      console.error("Exiting due to database connection failure in production mode");
+      process.exit(1);
+    }
   });
 
 // connection events

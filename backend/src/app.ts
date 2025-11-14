@@ -118,4 +118,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   }
 });
 
+// Export both httpServer (for traditional deployment) and app (for Vercel)
+export { app };
 export default httpServer;

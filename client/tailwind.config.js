@@ -5,20 +5,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#7868F7",
-        primary_hover: "#675ad1",
-        secondary: "#009A6E",
-        backgroundLight1: "#ffffff", // 50
-        backgroundLight2: "#f5f7fb", // 100
-        backgroundLight3: "#e6ebf5",
-
-        text_light_primary: "#F2F3F4",
-        text_light_secondary: "#F2F3F4",
-        text_dark_primary: "#111111",
-        text_dark_secondary: "#48494a ",
-        backgroundDark1: "#36404a",
-        backgroundDark2: "#303841",
-        backgroundDark3: "#262e35",
+        // WhatsApp Color Palette
+        primary: "#25D366", // WhatsApp green
+        primary_hover: "#20BD5A", // Darker green on hover
+        secondary: "#128C7E", // Dark green accent
+        
+        // Light theme - WhatsApp style
+        backgroundLight1: "#FFFFFF", // Pure white
+        backgroundLight2: "#F0F2F5", // Chat list background
+        backgroundLight3: "#E9EDEF", // Borders, dividers
+        
+        text_light_primary: "#111B21", // Primary text
+        text_light_secondary: "#667781", // Secondary text, timestamps
+        
+        // Dark theme - WhatsApp style
+        text_dark_primary: "#E9EDEF", // Primary text in dark
+        text_dark_secondary: "#8696A0", // Secondary text in dark
+        backgroundDark1: "#2A3942", // Borders in dark
+        backgroundDark2: "#202C33", // Panels, chat list
+        backgroundDark3: "#0B141A", // Main background
+        
+        // WhatsApp specific colors
+        whatsapp_teal: "#075E54", // Header background light
+        whatsapp_green_light: "#DCF8C6", // Sent message bubble light
+        whatsapp_green_dark: "#005C4B", // Sent message bubble dark
+        whatsapp_bubble_light: "#FFFFFF", // Received message light
+        whatsapp_bubble_dark: "#202C33", // Received message dark
+        whatsapp_active: "#E7F8EE", // Active chat highlight
+        
+        // Additional utility colors
+        border_light: "#E9EDEF",
+        border_dark: "#2A3942",
+        hover_light: "#F5F6F6",
+        hover_dark: "#2A3942",
       },
 
       screens: {

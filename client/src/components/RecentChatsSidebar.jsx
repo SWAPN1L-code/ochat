@@ -55,41 +55,42 @@ export default function RecentChatsSidebar() {
 
   return (
     <div
-      className={` px-5 py-6 md:p-2 w-full h-full md:${
+      className={`w-full h-full md:${
         isChatSelected ? "hidden" : "block"
       }`}
     >
-      <div className="top">
-        <h1 className="text-black font-medium text-xl dark:text-white">
-          Recent chats
+      {/* WhatsApp Style Header */}
+      <div className="bg-backgroundLight1 dark:bg-backgroundDark2 px-4 py-3 border-b border-border_light dark:border-border_dark">
+        <h1 className="text-text_light_primary font-medium text-lg dark:text-text_dark_primary mb-3">
+          Chats
         </h1>
-        <div
-          className="flex
-          items-center gap-1 bg-backgroundLight3 dark:bg-backgroundDark1 dark:text-slate-300 p-3 rounded-md my-5"
-        >
-          <div className="text-xl">
+        <div className="flex items-center gap-2 bg-backgroundLight2 dark:bg-backgroundDark3 px-3 py-2 rounded-lg">
+          <div className="text-lg text-text_light_secondary dark:text-text_dark_secondary">
             <BiSearch />
           </div>
           <input
             type="text"
             onChange={getFilteredRecentChats}
-            className="bg-transparent outline-none px-2 w-[90%]"
-            placeholder="Search for chats..."
+            className="bg-transparent outline-none px-1 w-full text-sm text-text_light_primary dark:text-text_dark_primary placeholder-text_light_secondary dark:placeholder-text_dark_secondary"
+            placeholder="Search or start new chat"
           />
         </div>
+      </div>
+      
+      <div className="chat-list bg-backgroundLight1 dark:bg-backgroundDark2">
 
         {loadingChats ? (
-          <div className="flex justify-center items-center h-[calc(100vh-170px)]">
+          <div className="flex justify-center items-center h-[calc(100vh-200px)]">
             <Loading />
           </div>
         ) : currentUserChats?.length === 0 ? (
-          <div className="flex justify-center items-center h-52">
-            <h1 className="text-2xl text-slate-400 dark:text-slate-500">
-              No Recent chats
-            </h1>
+          <div className="flex flex-col justify-center items-center h-96 px-8">
+            <p className="text-text_light_secondary dark:text-text_dark_secondary text-center">
+              No chats yet. Start a conversation!
+            </p>
           </div>
         ) : (
-          <div className="recentUserChats overflow-auto max-h-[calc(100vh-170px)] md:h-[calc(100vh-280px)]">
+          <div className="recentUserChats overflow-auto h-[calc(100vh-200px)] md:h-[calc(100vh-280px)]">
             {filteredRecentUserChats?.map((chat) => (
               <RecentUserChatCard
                 key={chat._id}

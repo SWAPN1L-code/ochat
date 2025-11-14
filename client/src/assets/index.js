@@ -29,7 +29,7 @@ import { MdFlipCameraAndroid } from "react-icons/md";
 import { PiDownloadSimpleBold } from "react-icons/pi";
 import { ImEnlarge2 } from "react-icons/im";
 import { IoClose } from "react-icons/io5";
-import { FaFile } from "react-icons/fa";
+import { FaFile, FaCamera } from "react-icons/fa";
 
 import logo from "./svgs/logo.svg";
 import profile from "./images/profile.png";
@@ -77,5 +77,6 @@ export {
   ImEnlarge2,
   IoClose,
   FaFile,
+  FaCamera,
   ringtone,
 };

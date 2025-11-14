@@ -74,6 +74,12 @@ const AuthProvider = ({ children }) => {
     );
   };
 
+  // update user data in context and localStorage
+  const updateUser = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
   // check for saved user and token in local storage
   // useEffect(() => {
   //   setIsLoading(true);
@@ -108,6 +114,7 @@ const AuthProvider = ({ children }) => {
         login,
         register,
         logout,
+        updateUser,
         isLoading,
         authMessage,
         authError,

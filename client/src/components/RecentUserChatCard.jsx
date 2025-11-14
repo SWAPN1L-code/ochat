@@ -12,19 +12,19 @@ export default function RecentUserChatCard({ chat, onClick, isActive }) {
   return (
     <div
       onClick={() => onClick(chat)}
-      className={`flex gap-2 p-4 my-1 rounded-md hover:bg-backgroundLight3  dark:hover:bg-backgroundDark1 ${
-        isActive ? "bg-backgroundLight3 dark:bg-backgroundDark1 " : ""
-      } items-center w-full cursor-pointer`}
+      className={`flex gap-3 px-4 py-3 hover:bg-backgroundLight2 dark:hover:bg-backgroundDark3 ${
+        isActive ? "bg-backgroundLight2 dark:bg-backgroundDark3" : ""
+      } items-center w-full cursor-pointer transition-colors border-b border-border_light dark:border-border_dark`}
     >
       {chat.isGroupChat ? (
-        <div className="w-12 relative h-12 mr-2 flex-shrink-0 flex justify-start items-center flex-nowrap">
+        <div className="w-12 relative h-12 flex-shrink-0 flex justify-start items-center flex-nowrap">
           {chat.participants.slice(0, 3).map((participant, i) => {
             return (
               <img
                 key={participant._id}
                 src={participant.avatarUrl}
                 loading="lazy"
-                className={`w-10 h-10  border-white rounded-full absolute outline outline-3 outline-black ${
+                className={`w-9 h-9 border-2 border-white dark:border-backgroundDark2 rounded-full absolute ${
                   i === 0
                     ? "left-0 z-30"
                     : i === 1
@@ -39,38 +39,28 @@ export default function RecentUserChatCard({ chat, onClick, isActive }) {
         </div>
       ) : (
         <img
-          className="size-12 rounded-full object-cover"
+          className="size-12 rounded-full object-cover flex-shrink-0"
           src={filteredChat.avatar}
           alt=""
           loading="lazy"
         />
       )}
 
-      <div className=" w-full">
-        <div
-          className="flex items-center
-        justify-between"
-        >
-          <div>
-            <p className="font-medium text-base text-slate-700 dark:text-slate-100">
-              {filteredChat.title}
-            </p>
-          </div>
-          <div className="font-light text-xs text-slate-500 dark:text-slate-400">
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center justify-between mb-1">
+          <p className="font-medium text-base text-text_light_primary dark:text-text_dark_primary truncate">
+            {filteredChat.title}
+          </p>
+          <span className="text-xs text-text_light_secondary dark:text-text_dark_secondary ml-2 flex-shrink-0">
             {chat.lastMessage
-              ? moment(chat.lastMessage?.createdAt)
-                  .add("TIME_ZONE", "hours")
-                  .fromNow(true) + " ago"
-              : ""}{" "}
-          </div>
+              ? moment(chat.lastMessage?.createdAt).format("HH:mm")
+              : ""}
+          </span>
         </div>
-        <div className=" w-full flex items-center justify-between">
-          <div className="text-sm text-slate-500 dark:text-slate-400">
-            {limitChar(filteredChat.lastMessage, 25)}
-          </div>
-          {/* <span className="rounded-full size-5 text-center content-center text-xs bg-secondary bg-opacity-20 shadow-md dark:text-white">
-            3
-          </span> */}
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-text_light_secondary dark:text-text_dark_secondary truncate">
+            {limitChar(filteredChat.lastMessage, 30)}
+          </p>
         </div>
       </div>
     </div>

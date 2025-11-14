@@ -14,20 +14,20 @@ const Loading = () => {
 
         @keyframes l5 {
           0% {
-            box-shadow: 20px 0 #000, -20px 0 #0002;
-            background: #000;
+            box-shadow: 20px 0 #25D366, -20px 0 #25D36622;
+            background: #25D366;
           }
           33% {
-            box-shadow: 20px 0 #000, -20px 0 #0002;
-            background: #0002;
+            box-shadow: 20px 0 #25D366, -20px 0 #25D36622;
+            background: #25D36622;
           }
           66% {
-            box-shadow: 20px 0 #0002, -20px 0 #000;
-            background: #0002;
+            box-shadow: 20px 0 #25D36622, -20px 0 #25D366;
+            background: #25D36622;
           }
           100% {
-            box-shadow: 20px 0 #0002, -20px 0 #000;
-            background: #000;
+            box-shadow: 20px 0 #25D36622, -20px 0 #25D366;
+            background: #25D366;
           }
         }
       `}</style>
