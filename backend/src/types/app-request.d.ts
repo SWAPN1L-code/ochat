@@ -1,7 +1,12 @@
 import { Request } from "express";
 import User from "../database/model/User";
-import type { Multer } from "multer";
 
-declare interface ProtectedRequest extends Request {
-  user: User;
+declare global {
+  namespace Express {
+    interface Request {
+      user?: User;
+    }
+  }
 }
+
+export interface ProtectedRequest extends Request {}
